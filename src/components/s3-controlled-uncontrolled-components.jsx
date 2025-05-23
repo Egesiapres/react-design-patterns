@@ -1,9 +1,12 @@
-import { UncontrolledForm } from "./uncontrolled-form";
+import { ControlledForm } from "./controlled-form";
+// import { UncontrolledForm } from "./uncontrolled-form";
 
 function S3ControlledUncontrolledComponents() {
   return (
     <>
-      <UncontrolledForm />
+      {/* <UncontrolledForm /> */}
+
+      <ControlledForm />
     </>
   );
 }
