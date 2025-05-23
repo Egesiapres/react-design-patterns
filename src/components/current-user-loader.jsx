@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react"
 
-// P1: Container Component Pattern
+// PATTERN 1: Container Component Pattern
 export const CurrentUserLoader = ({ children }) => {
   const [user, setUser] = useState(null);
 
@@ -14,7 +14,7 @@ export const CurrentUserLoader = ({ children }) => {
   }, []);
 
   // Props are passed just in some scenarios
-  
+
   // React.Children: access to the children elements to perform something
   // React.isValidElement: just if the child is valid
   // React.cloneElement: actually attaches some extra props to the element
