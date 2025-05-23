@@ -1,21 +1,19 @@
+import { BookInfo } from "./components/book-info";
 import { CurrentUserLoader } from "./components/current-user-loader";
+import { ResourceLoader } from "./components/resource-loader";
 import { UserInfo } from "./components/user-info";
 import { UserLoader } from "./components/user-loader";
 
 function App() {
   return (
     <>
-      <UserLoader userId={"3"}>
+      <ResourceLoader resourceUrl={"/users/2"} resourceName={"user"}>
         <UserInfo />
-      </UserLoader>
+      </ResourceLoader>
 
-      <UserLoader userId={"2"}>
-        <UserInfo />
-      </UserLoader>
-
-      <UserLoader userId={"1"}>
-        <UserInfo />
-      </UserLoader>
+      <ResourceLoader resourceUrl={"/books/1"} resourceName={"book"}>
+        <BookInfo />
+      </ResourceLoader>
     </>
   );
 }
