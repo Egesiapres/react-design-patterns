@@ -6,18 +6,18 @@ import { UncontrolledFlow } from "./uncontrolled-flow";
 // import { UncontrolledForm } from "./uncontrolled-form";
 
 const StepOne = ({ goNext }) => <>
-  <h1>Step #1</h1>
-  <button onClick={goNext}>Next</button>
+  <h1>Step #1: Enter yuor name:</h1>
+  <button onClick={() => goNext({ name: "MyName" })}>Next</button>
 </>
 
 const StepTwo = ({ goNext }) => <>
-  <h1>Step #2</h1>
-  <button onClick={goNext}>Next</button>
+  <h1>Step #2: Enter your age:</h1>
+  <button onClick={() => goNext({ age: 23 })}>Next</button>
 </>
 
 const StepThree = ({ goNext }) => <>
-  <h1>Step #3</h1>
-  <button onClick={goNext}>Next</button>
+  <h1>Step #3: Enter your country:</h1>
+  <button onClick={() => goNext({ country: "Mars" })}>Next</button>
 </>
 
 function S3ControlledUncontrolledComponents() {
@@ -33,7 +33,10 @@ function S3ControlledUncontrolledComponents() {
       </ControlledModal>
       <button onClick={() => setShouldDisplay(!shouldDisplay)}>{shouldDisplay ? "Hide Modal" : "Display Modal"}</button> */}
 
-      <UncontrolledFlow>
+      <UncontrolledFlow onDone={data => {
+        console.log(data);
+        alert("Yaee, you made it to the final step!");
+      }}>
         <StepOne />
         <StepTwo />
         <StepThree />
