@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react"
 
+// PRO: unaware of the userId 
+// (able to fetch different users according to their ids)
 export const UserLoader = ({ userId, children }) => {
   const [user, setUser] = useState(null);
 
