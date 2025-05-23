@@ -14,6 +14,10 @@ export const DataSource = ({ getData = () => { }, resourceName, children }) => {
     })()
   }, [getData]);
 
+  // Do not use Children & cloneElement everywhere, especially in simple scenarios
+  // Here normal because we are caring about maintainability, readability & clan
+
+  // It's possible to avoid this thig using thr Render Props Pattern, or Render Function
   return (
     <>
       {React.Children.map(children, child => {
