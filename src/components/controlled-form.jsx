@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-// values the user is inputting in the form are accessible
+// CONTROLLED COMPONENT: values the user is inputting in the form are accessible
 export const ControlledForm = () => {
 	const [error, setError] = useState("");
 	const [name, setName] = useState("");

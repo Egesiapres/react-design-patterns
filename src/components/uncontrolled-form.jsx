@@ -1,6 +1,6 @@
 import React from "react"
 
-// the states of the form component are not accessible from the outside
+// UNCONTROLLED COMPONENTS: the states of the form component are not accessible
 // they're not the best choice
 // not very flexible
 export const UncontrolledForm = () => {
