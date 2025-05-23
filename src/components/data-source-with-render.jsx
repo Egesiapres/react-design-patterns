@@ -13,7 +13,7 @@ export const DataSourceWithRender = ({ getData = () => { }, render }) => {
     })()
   }, [getData]);
 
-  
+
   return render(resource)
 }
 
