@@ -1,6 +1,7 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+// import { useEffect, useLayoutEffect, useRef, useState } from "react";
 // import { createPortal } from "react-dom";
 import "../App.css";
+import Form from "./input";
 // import { Child } from "./child";
 // import Counter1 from "./counter1";
 // import { ErrorBoundary } from "./error-boundary";
@@ -16,24 +17,24 @@ import "../App.css";
 // 1. Capturing: top to bottom
 // 2. Bubbling: bottom to top
 function S8AdvancedConceptHooks() {
-  const [show, setShow] = useState(false);
-  const [top, setTop] = useState(0);
-  const buttonRef = useRef(null);
+  // const [show, setShow] = useState(false);
+  // const [top, setTop] = useState(0);
+  // const buttonRef = useRef(null);
 
   // const [changeShirts, setChangeShirts] = useState(false);
 
   // like the useEffect but handles in a better way scenarios in which
   // I'm rendering something according to the output of an operation that is happening inside the useEffect
-  useLayoutEffect(() => {
-    if (buttonRef.current === null || !show) return setTop(0);
-    const { bottom } = buttonRef.current.getBoundingClientRect();
-    setTop(bottom + 30);
-  }, [show]);
+  // useLayoutEffect(() => {
+  //   if (buttonRef.current === null || !show) return setTop(0);
+  //   const { bottom } = buttonRef.current.getBoundingClientRect();
+  //   setTop(bottom + 30);
+  // }, [show]);
 
-  const now = performance.now();
-  while (now > performance.now() - 100) {
-    // Do something
-  }
+  // const now = performance.now();
+  // while (now > performance.now() - 100) {
+  //   // Do something
+  // }
 
   return (
     <>
@@ -74,7 +75,7 @@ function S8AdvancedConceptHooks() {
         <button onClick={() => setChangeShirts(s => !s)}>Switch</button>
       </div> */}
 
-      <button
+      {/* <button
         ref={buttonRef}
         onClick={() => setShow(s => !s)}
       >
@@ -89,7 +90,14 @@ function S8AdvancedConceptHooks() {
         >
           Some text ...
         </div>
-      )}
+      )} */}
+
+      <Form />
+      <p>
+        It is a long established fact that a reader will be distracted by the
+        readable content of a page when looking at its layout.
+      </p>
+      <Form />
     </>
   );
 }
