@@ -1,7 +1,13 @@
-// import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 // import { createPortal } from "react-dom";
 import "../App.css";
-import Form from "./input";
+// import Form from "./input";
 // import { Child } from "./child";
 // import Counter1 from "./counter1";
 // import { ErrorBoundary } from "./error-boundary";
@@ -21,6 +27,14 @@ function S8AdvancedConceptHooks() {
   // const [top, setTop] = useState(0);
   // const buttonRef = useRef(null);
 
+  const [showInput, setShowInput] = useState(false);
+  const realInputRef = useRef();
+  const inputRef = useCallback(input => {
+    realInputRef.current = input; // to assign the ref to the input element
+    if (input === null) return;
+    input.focus();
+  }, []);
+
   // const [changeShirts, setChangeShirts] = useState(false);
 
   // like the useEffect but handles in a better way scenarios in which
@@ -35,6 +49,11 @@ function S8AdvancedConceptHooks() {
   // while (now > performance.now() - 100) {
   //   // Do something
   // }
+
+  // tries to add a focus on the ref event if it's not initialized yet
+  // useEffect(() => {
+  //   inputRef.current.focus();
+  // }, []);
 
   return (
     <>
@@ -92,12 +111,20 @@ function S8AdvancedConceptHooks() {
         </div>
       )} */}
 
-      <Form />
+      {/* <Form />
       <p>
         It is a long established fact that a reader will be distracted by the
         readable content of a page when looking at its layout.
       </p>
-      <Form />
+      <Form /> */}
+
+      <button onClick={() => setShowInput(s => !s)}>Switch</button>
+      {showInput && (
+        <input
+          type="text"
+          ref={inputRef}
+        />
+      )}
     </>
   );
 }
@@ -124,3 +151,4 @@ export default S8AdvancedConceptHooks;
 
 // - review bubbling (Event Listeners)
 // - useLayoutEffect
+// useCallback as Ref not working
