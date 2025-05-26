@@ -1,5 +1,6 @@
 // import { includeUser } from "./include-user";
-import { UserInfoForm } from "./user-form";
+import { BookInfoForm } from "./book-form";
+// import { UserInfoForm } from "./user-form";
 // import { logProps } from "./log-props";
 // import { UserInfo } from "./user-info";
 
@@ -16,7 +17,9 @@ function S4HOCs() {
 
       {/* <UserInfoWithLoader /> */}
 
-      <UserInfoForm />
+      {/* <UserInfoForm /> */}
+
+      <BookInfoForm />
     </>
   );
 }
