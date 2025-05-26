@@ -1,6 +1,5 @@
+import { useEffect, useState } from "react";
 import { emitter } from "./s7-more-patterns";
-
-const { useState, useEffect } = require("react");
 
 const Counter = () => {
   const [count, setCount] = useState(0);

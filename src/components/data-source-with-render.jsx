@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 // PRO: cleaner than React.Children etc.
-// just a variant they are interchangable and both are perfectly fine
+// just a variant they are interchangeable and both are perfectly fine
 export const DataSourceWithRender = ({ getData = () => {}, render }) => {
   const [resource, setResource] = useState(null);
 
