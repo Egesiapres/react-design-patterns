@@ -1,6 +1,6 @@
 // import { RecursiveComponent } from "./recursive";
-
-import { GreenSmallButton, RedButton } from "./composition";
+// import { GreenSmallButton, RedButton } from "./composition";
+import { RedButton, SmallRedButton } from "./partial";
 
 // const myNestedObject = {
 //   key1: "value1",
@@ -16,8 +16,11 @@ function S6FunctionalProgrammingInReact() {
     <>
       {/* <RecursiveComponent data={myNestedObject} /> */}
 
+      {/* <RedButton text="I am red!" />
+      <GreenSmallButton text="I am small and green!" /> */}
+
       <RedButton text="I am red!" />
-      <GreenSmallButton text="I am small and green!" />
+      <SmallRedButton text="I am small and red!" />
     </>
   );
 }
