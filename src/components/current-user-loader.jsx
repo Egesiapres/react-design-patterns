@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 
 // PATTERN 1: Container Component Pattern
 export const CurrentUserLoader = ({ children }) => {
@@ -9,8 +9,8 @@ export const CurrentUserLoader = ({ children }) => {
     (async () => {
       const response = await axios.get("/current-user");
 
-      setUser(response.data)
-    })()
+      setUser(response.data);
+    })();
   }, []);
 
   // Props are passed just in some scenarios
@@ -22,11 +22,11 @@ export const CurrentUserLoader = ({ children }) => {
     <>
       {React.Children.map(children, child => {
         if (React.isValidElement(child)) {
-          return React.cloneElement(child, { user })
+          return React.cloneElement(child, { user });
         }
 
         return child;
       })}
     </>
-  )
-}
+  );
+};

@@ -1,7 +1,7 @@
 // import { useCurrentUser } from "./current-user-hook";
 import axios from "axios";
-import { useDataSource } from "./data-source.hook";
 import { useCallback } from "react";
+import { useDataSource } from "./data-source.hook";
 // import { useResource } from "./resource.hook";
 // import { useUser } from "./user.hook";
 
@@ -10,7 +10,7 @@ const fetchFromServer = resourceUrl => async () => {
   return response.data;
 };
 
-// const getDataFromLocalStoragge = key => () => {
+// const getDataFromLocalStorage = key => () => {
 //   return localStorage.getItem(key);
 // }
 
@@ -26,10 +26,10 @@ export const UserInfo = ({ userId }) => {
 
   // const user = useUser(userId);
   // const user = useResource("/users/2")
-  
+
   const fetchUser = useCallback(fetchFromServer(`/users/${userId}`), [userId]);
-  const user = useDataSource(fetchUser); 
-  // const message = useDataSource(getDataFromLocalStoragge("msg"));
+  const user = useDataSource(fetchUser);
+  // const message = useDataSource(getDataFromLocalStorage("msg"));
 
   const { name, age, country, books } = user || {};
 
@@ -40,12 +40,12 @@ export const UserInfo = ({ userId }) => {
       <p>Country: {country}</p>
       <h2>Books</h2>
       <ul>
-        {books.map((book) => (
+        {books.map(book => (
           <li key={book}> {book} </li>
         ))}
       </ul>
     </>
   ) : (
     <h1>Loading...</h1>
-  )
-}
+  );
+};

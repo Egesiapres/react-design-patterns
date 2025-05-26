@@ -8,8 +8,8 @@ export const useCurrentUser = () => {
     (async () => {
       const response = await axios.get("/current-user");
       setUser(response.data);
-    })()
-  }, [])
+    })();
+  }, []);
 
   return user;
-}
+};

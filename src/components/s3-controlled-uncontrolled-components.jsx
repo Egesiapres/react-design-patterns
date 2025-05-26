@@ -6,25 +6,33 @@ import { ControlledFlow } from "./controlled-flow";
 // import { UncontrolledModal } from "./uncontrolled-modal";
 // import { UncontrolledForm } from "./uncontrolled-form";
 
-const StepOne = ({ goNext }) => <>
-  <h1>Step #1: Enter yuor name:</h1>
-  <button onClick={() => goNext({ name: "MyName" })}>Next</button>
-</>
+const StepOne = ({ goNext }) => (
+  <>
+    <h1>Step #1: Enter yuor name:</h1>
+    <button onClick={() => goNext({ name: "MyName" })}>Next</button>
+  </>
+);
 
-const StepTwo = ({ goNext }) => <>
-  <h1>Step #2: Enter your age:</h1>
-  <button onClick={() => goNext({ age: 26 })}>Next</button>
-</>
+const StepTwo = ({ goNext }) => (
+  <>
+    <h1>Step #2: Enter your age:</h1>
+    <button onClick={() => goNext({ age: 26 })}>Next</button>
+  </>
+);
 
-const StepThree = ({ goNext }) => <>
-  <h1>Congraturations! You qualify for the gift!</h1>
-  <button onClick={() => goNext({ country: "Mars" })}>Next</button>
-</>
+const StepThree = ({ goNext }) => (
+  <>
+    <h1>Congratulations! You qualify for the gift!</h1>
+    <button onClick={() => goNext({ country: "Mars" })}>Next</button>
+  </>
+);
 
-const StepFour = ({ goNext }) => <>
-  <h1>Step #4: Enter your country:</h1>
-  <button onClick={() => goNext({})}>Next</button>
-</>
+const StepFour = ({ goNext }) => (
+  <>
+    <h1>Step #4: Enter your country:</h1>
+    <button onClick={() => goNext({})}>Next</button>
+  </>
+);
 
 function S3ControlledUncontrolledComponents() {
   // const [shouldDisplay, setShouldDisplay] = useState(false);
@@ -32,10 +40,10 @@ function S3ControlledUncontrolledComponents() {
   const [data, setData] = useState({});
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
-  const onNext = (dataFromStep) => {
+  const onNext = dataFromStep => {
     setData({ ...data, ...dataFromStep });
     setCurrentStepIndex(currentStepIndex + 1);
-  }
+  };
 
   return (
     <>
@@ -57,7 +65,10 @@ function S3ControlledUncontrolledComponents() {
       </UncontrolledFlow> */}
 
       {/* // Controlled Flow helps in handling condition in the parent component */}
-      <ControlledFlow currentIndex={currentStepIndex} onNext={onNext}>
+      <ControlledFlow
+        currentIndex={currentStepIndex}
+        onNext={onNext}
+      >
         <StepOne />
         <StepTwo />
         {data.age > 25 && <StepThree />}

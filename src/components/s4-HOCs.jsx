@@ -6,7 +6,7 @@ import { BookInfoForm } from "./book-form";
 
 // wrapper is needed to use a HOC
 // const UserInfoWrapper = logProps(UserInfo);
-// const UserInfoWithLoader = includUser(UserInfo, "3");
+// const UserInfoWithLoader = includeUser(UserInfo, "3");
 
 function S4HOCs() {
   return (

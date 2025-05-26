@@ -19,16 +19,16 @@ const ModalContent = styled.div`
 
 // CONTROLLED COMPONENT: the state is controlled from the outside
 export const ControlledModal = ({ shouldDisplay, onClose, children }) => {
-	return (
-		<>
-			{shouldDisplay && (
-				<ModalBackground onClick={onClose}>
-					<ModalContent onClick={e => e.stopPropagation()}>
-						<button onClick={onClose}>Hide Modal</button>
-						{children}
-					</ModalContent>
-				</ModalBackground>
-			)}
-		</>
-	)
-}
+  return (
+    <>
+      {shouldDisplay && (
+        <ModalBackground onClick={onClose}>
+          <ModalContent onClick={e => e.stopPropagation()}>
+            <button onClick={onClose}>Hide Modal</button>
+            {children}
+          </ModalContent>
+        </ModalBackground>
+      )}
+    </>
+  );
+};

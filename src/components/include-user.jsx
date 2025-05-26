@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 // HOC es 1: fetch data & add extra props
 export const includeUser = (Component, userId) => {
@@ -10,9 +10,14 @@ export const includeUser = (Component, userId) => {
       (async () => {
         const response = await axios.get(`/users/${userId}`);
         setUser(response.data);
-      })()
-    }, [])
+      })();
+    }, []);
 
-    return <Component {...props} user={user} />
-  }
-}
+    return (
+      <Component
+        {...props}
+        user={user}
+      />
+    );
+  };
+};

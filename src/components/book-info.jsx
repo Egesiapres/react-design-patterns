@@ -1,7 +1,7 @@
 import { useResource } from "./resource.hook";
 
 export const BookInfo = ({ bookId }) => {
-  const book = useResource(`/books/${bookId}`)
+  const book = useResource(`/books/${bookId}`);
   const { name, price, title, pages } = book || {};
 
   return book ? (
@@ -13,5 +13,5 @@ export const BookInfo = ({ bookId }) => {
     </>
   ) : (
     <h1>Loading</h1>
-  )
-}
+  );
+};
