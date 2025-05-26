@@ -1,11 +1,11 @@
-import { includUser } from "./include-user";
+// import { includeUser } from "./include-user";
+import { UserInfoForm } from "./user-form";
 // import { logProps } from "./log-props";
-import { UserInfo } from "./user-info";
+// import { UserInfo } from "./user-info";
 
 // wrapper is needed to use a HOC
 // const UserInfoWrapper = logProps(UserInfo);
-
-const UserInfoWithLoader = includUser(UserInfo, "3");
+// const UserInfoWithLoader = includUser(UserInfo, "3");
 
 function S4HOCs() {
   return (
@@ -15,6 +15,8 @@ function S4HOCs() {
       </UserInfoWrapper> */}
 
       {/* <UserInfoWithLoader /> */}
+
+      <UserInfoForm />
     </>
   );
 }
