@@ -14,7 +14,7 @@ function S4HOCs() {
         <UserInfo />
       </UserInfoWrapper> */}
 
-      <UserInfoWithLoader />
+      {/* <UserInfoWithLoader /> */}
     </>
   );
 }
