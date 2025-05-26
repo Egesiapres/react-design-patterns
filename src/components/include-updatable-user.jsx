@@ -20,7 +20,6 @@ export const includeUpdatableUser = (Component, userId) => {
 
     const onChangeUser = updates => {
       setUser({ ...user, ...updates });
-      console.log(updates)
     }
 
     const onPostUser = async () => {
