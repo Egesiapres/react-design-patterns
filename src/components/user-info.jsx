@@ -1,4 +1,8 @@
-export const UserInfo = ({ user }) => {
+import { useCurrentUser } from "./current-user-hook";
+
+export const UserInfo = () => {
+  const user = useCurrentUser();
+  
   const { name, age, country, books } = user || {};
 
   return user ? (
