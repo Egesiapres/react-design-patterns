@@ -1,11 +1,15 @@
-import Card from "./card";
+// import Card from "./card";
+import ParentComponent from "./parent";
+import mitt from "mitt";
+
+export const emitter = mitt();
 
 // COMPOUND COMPONENTS: composed by other components
 // (useful to remove the conditions and making everything more readable and maintainable)
 function S7MorePatterns() {
   return (
     <>
-      <Card test="test">
+      {/* <Card test="test">
         <Card.Header>
           <h1 style={{ margin: "0" }}>Header</h1>
         </Card.Header>
@@ -24,7 +28,9 @@ function S7MorePatterns() {
           <button>Ok</button>
           <button>Cancel</button>
         </Card.Footer>
-      </Card>
+      </Card> */}
+
+      <ParentComponent />
     </>
   );
 }
