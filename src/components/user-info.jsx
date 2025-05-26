@@ -1,11 +1,36 @@
 // import { useCurrentUser } from "./current-user-hook";
-import { useResource } from "./resource.hook";
+import axios from "axios";
+import { useDataSource } from "./data-source.hook";
+import { useCallback } from "react";
+// import { useResource } from "./resource.hook";
 // import { useUser } from "./user.hook";
 
+const fetchFromServer = resourceUrl => async () => {
+  const response = await axios.get(resourceUrl);
+  return response.data;
+};
+
+// const getDataFromLocalStoragge = key => () => {
+//   return localStorage.getItem(key);
+// }
+
 export const UserInfo = ({ userId }) => {
+  console.log("Am I rendering");
+  // loop of logs
+  // 1. fetchFromServer is defined outside the component
+  // 2. the component mounts and an instance of it is created inside the hook
+  // 3. the hook runs
+  // 4. the component is updated
+  // repeat
+  // FIX: useCallback
+
   // const user = useUser(userId);
-  const user = useResource("/users/2")
+  // const user = useResource("/users/2")
   
+  const fetchUser = useCallback(fetchFromServer(`/users/${userId}`), [userId]);
+  const user = useDataSource(fetchUser); 
+  // const message = useDataSource(getDataFromLocalStoragge("msg"));
+
   const { name, age, country, books } = user || {};
 
   return user ? (
