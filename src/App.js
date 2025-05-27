@@ -4,7 +4,8 @@
 // import S5CustomHooks from "./components/s5-custom-hooks";
 // import S6FunctionalProgrammingInReact from "./components/s6-functional-programming-in-react";
 // import S7MorePatterns from "./components/s7-more-patterns";
-import S8AdvancedConceptHooks from "./components/s8-advanced-concept-hooks";
+// import S8AdvancedConceptHooks from "./components/s8-advanced-concept-hooks";
+import S9CleanCodeTips from "./components/s9-clean-code-tips";
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
 
       {/* <S7MorePatterns /> */}
 
-      <S8AdvancedConceptHooks />
+      {/* <S8AdvancedConceptHooks /> */}
+
+      <S9CleanCodeTips />
     </>
   );
 }
