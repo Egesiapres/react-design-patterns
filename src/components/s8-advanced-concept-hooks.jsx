@@ -1,5 +1,6 @@
 import {
   useCallback,
+  useDeferredValue,
   useEffect,
   useLayoutEffect,
   useRef,
@@ -7,6 +8,7 @@ import {
 } from "react";
 // import { createPortal } from "react-dom";
 import "../App.css";
+import { HeavyComponent } from "./heavy-component";
 // import Form from "./input";
 // import { Child } from "./child";
 // import Counter1 from "./counter1";
@@ -27,13 +29,13 @@ function S8AdvancedConceptHooks() {
   // const [top, setTop] = useState(0);
   // const buttonRef = useRef(null);
 
-  const [showInput, setShowInput] = useState(false);
-  const realInputRef = useRef();
-  const inputRef = useCallback(input => {
-    realInputRef.current = input; // to assign the ref to the input element
-    if (input === null) return;
-    input.focus();
-  }, []);
+  // const [showInput, setShowInput] = useState(false);
+  // const realInputRef = useRef();
+  // const inputRef = useCallback(input => {
+  //   realInputRef.current = input; // to assign the ref to the input element
+  //   if (input === null) return;
+  //   input.focus();
+  // }, []);
 
   // const [changeShirts, setChangeShirts] = useState(false);
 
@@ -54,6 +56,17 @@ function S8AdvancedConceptHooks() {
   // useEffect(() => {
   //   inputRef.current.focus();
   // }, []);
+
+  const [keyword, setKeyword] = useState("");
+
+  // disconnects the input value from the heavy component render
+  // the component is rendered with a lower priority
+  // before: state & input onChange
+  // when the high priority tasks are ended the component is re-rendered
+  const deferredKeyword = useDeferredValue(keyword);
+
+  console.log("Keyword:", keyword);
+  console.log("Deferred Keyword:", deferredKeyword);
 
   return (
     <>
@@ -118,13 +131,20 @@ function S8AdvancedConceptHooks() {
       </p>
       <Form /> */}
 
-      <button onClick={() => setShowInput(s => !s)}>Switch</button>
+      {/* <button onClick={() => setShowInput(s => !s)}>Switch</button>
       {showInput && (
         <input
           type="text"
           ref={inputRef}
         />
       )}
+      */}
+
+      <input
+        value={keyword}
+        onChange={e => setKeyword(e.target.value)}
+      />
+      <HeavyComponent keyword={deferredKeyword} />
     </>
   );
 }
