@@ -90,6 +90,8 @@ function S8AdvancedConceptHooks() {
       console.log("inside");
     });
     console.log("after");
+
+    // ? 48. Async React Router
   };
 
   return (
@@ -172,7 +174,7 @@ function S8AdvancedConceptHooks() {
       <HeavyComponent keyword={deferredKeyword} /> */}
 
       {/* // ? 47. useTransition */}
-      <StyledButton onClick={() => sectionHandler("Cover")}>
+      {/* <StyledButton onClick={() => sectionHandler("Cover")}>
         Book Cover
       </StyledButton>
       <StyledButton onClick={() => sectionHandler("Reviews")}>
@@ -190,7 +192,7 @@ function S8AdvancedConceptHooks() {
         <Reviews />
       ) : (
         <Writer />
-      )}
+      )} */}
     </>
   );
 }
