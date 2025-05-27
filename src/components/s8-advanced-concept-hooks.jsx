@@ -1,14 +1,19 @@
 import {
-  useCallback,
-  useDeferredValue,
-  useEffect,
-  useLayoutEffect,
-  useRef,
+  // useCallback,
+  // useDeferredValue,
+  // useEffect,
+  // useLayoutEffect,
+  // useRef,
   useState,
+  useTransition,
 } from "react";
 // import { createPortal } from "react-dom";
 import "../App.css";
-import { HeavyComponent } from "./heavy-component";
+import Cover from "./cover";
+//import { HeavyComponent } from "./heavy-component";
+import Reviews from "./reviews";
+import { StyledButton } from "./styled-elements";
+import Writer from "./writer";
 // import Form from "./input";
 // import { Child } from "./child";
 // import Counter1 from "./counter1";
@@ -57,16 +62,35 @@ function S8AdvancedConceptHooks() {
   //   inputRef.current.focus();
   // }, []);
 
-  const [keyword, setKeyword] = useState("");
+  // ? 46. useDeferredValue
+  // const [keyword, setKeyword] = useState("");
 
   // disconnects the input value from the heavy component render
   // the component is rendered with a lower priority
   // before: state & input onChange
   // when the high priority tasks are ended the component is re-rendered
-  const deferredKeyword = useDeferredValue(keyword);
+  // const deferredKeyword = useDeferredValue(keyword);
 
-  console.log("Keyword:", keyword);
-  console.log("Deferred Keyword:", deferredKeyword);
+  // console.log("Keyword:", keyword);
+  // console.log("Deferred Keyword:", deferredKeyword);
+
+  // ? 47. useTransition
+  const [section, setSection] = useState("Cover");
+  const [isPending, startTransition] = useTransition();
+
+  const sectionHandler = sec => {
+    console.log("before");
+    startTransition(() => {
+      // pass the setters or the f that can be considerate non immediate update
+      // if have state value that change rapidly and u want to read it, and want to delay it -> useDeferredValue
+      // if u want to delay the update of a state that u are not going to read -> useTransition
+      // setters have to stay directly inside the useTransition, not in other f
+      // but I can wrap the useTransition inside another f
+      setSection(sec);
+      console.log("inside");
+    });
+    console.log("after");
+  };
 
   return (
     <>
@@ -140,11 +164,33 @@ function S8AdvancedConceptHooks() {
       )}
       */}
 
-      <input
+      {/* // ? 46. useDeferredValue */}
+      {/* <input
         value={keyword}
         onChange={e => setKeyword(e.target.value)}
       />
-      <HeavyComponent keyword={deferredKeyword} />
+      <HeavyComponent keyword={deferredKeyword} /> */}
+
+      {/* // ? 47. useTransition */}
+      <StyledButton onClick={() => sectionHandler("Cover")}>
+        Book Cover
+      </StyledButton>
+      <StyledButton onClick={() => sectionHandler("Reviews")}>
+        Book Reviews
+      </StyledButton>
+      <StyledButton onClick={() => sectionHandler("Writer")}>
+        Book's Writer
+      </StyledButton>
+
+      {isPending && "Loading..."}
+
+      {section === "Cover" ? (
+        <Cover />
+      ) : section === "Reviews" ? (
+        <Reviews />
+      ) : (
+        <Writer />
+      )}
     </>
   );
 }
